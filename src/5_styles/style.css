@@ -115,3 +115,16 @@ a {
   min-height: calc(100vh - (var(--footer-height) + var(--navbar-height)));
   padding: 5rem 0;
 }
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  height: 22rem;
+  display: block;
+  object-fit: cover;
+  border-radius: var(--radius-big);
+}
+
+.hero-image {
+  filter: brightness(70%);
+}

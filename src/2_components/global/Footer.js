@@ -3,17 +3,17 @@ import whiteLogo from '../../0_assets/kasa_logo_white.svg';
 
 const Footer = () => {
   return (
-    <NavContainer>
+    <FooterContainer>
       <img src={whiteLogo} alt="logo kasa blanc" className="footer-logo" />
       <p className="footer-text">
         &#169; {new Date().getFullYear()} Kasa. All right reserved
       </p>
-    </NavContainer>
+    </FooterContainer>
   );
 };
 export default Footer;
 
-const NavContainer = styled.footer`
+const FooterContainer = styled.footer`
   background-color: black;
   display: flex;
   flex-direction: column;

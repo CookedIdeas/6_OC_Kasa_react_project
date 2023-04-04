@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LogementPage = () => {
-  return <div>LogementPage</div>;
+  return <Wrapper>LogementPage</Wrapper>;
 };
 export default LogementPage;
+
+const Wrapper = styled.main``;

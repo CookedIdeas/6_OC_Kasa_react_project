@@ -1,5 +1,9 @@
 @media only screen and (max-width: 767px) {
-  body {
-    /* padding: 2rem 2rem 2rem 3rem; */
+  html {
+    font-size: 5px;
+  }
+
+  .section {
+    padding: 4rem 0;
   }
 }

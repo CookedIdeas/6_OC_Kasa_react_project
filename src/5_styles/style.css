@@ -47,6 +47,10 @@ h6 {
   overflow-wrap: break-word;
 }
 
+ul {
+  padding-inline-start: 10px;
+}
+
 #root,
 #__next {
   isolation: isolate;
@@ -95,6 +99,10 @@ ul {
 }
 a {
   text-decoration: none;
+}
+
+.section {
+  padding: 10rem 0;
 }
 
 .section-center {

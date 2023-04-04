@@ -57,16 +57,12 @@ const NavContainer = styled.nav`
   }
 
   @media only screen and (max-width: 767px) {
-    .logo {
-      width: 14.5rem;
-    }
-
-    .nav-links {
-      gap: 1rem;
-    }
     .nav-links > li {
-      font-size: 1.2rem;
       text-transform: uppercase;
+      color: black;
+    }
+    .nav-links {
+      gap: 3rem;
     }
   }
 `;

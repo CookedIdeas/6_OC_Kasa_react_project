@@ -33,11 +33,5 @@ const NavContainer = styled.footer`
   }
 
   @media only screen and (max-width: 767px) {
-    padding-bottom: 6rem;
-    gap: 3rem;
-    .footer-text {
-      color: white;
-      font-size: 1.2rem;
-    }
   }
 `;

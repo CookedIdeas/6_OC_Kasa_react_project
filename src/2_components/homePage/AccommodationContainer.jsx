@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import data from '../4_data/data_logements.json';
-import { AccommodationCard } from '../2_components';
+import data from '../../4_data/data_logements.json';
+import { AccommodationCard } from '.';
 
 const AccommodationContainer = () => {
   const accommodations = data;

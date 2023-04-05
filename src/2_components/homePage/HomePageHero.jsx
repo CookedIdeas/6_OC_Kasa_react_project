@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import photo from '../0_assets/home_hero_image.webp';
+import photo from '../../0_assets/home_hero_image.webp';
 
 const HomePageHero = () => {
   const heroText = 'Chez vous, partout et ailleurs';

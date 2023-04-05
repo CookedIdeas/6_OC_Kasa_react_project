@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HomePageHero, AccommodationContainer } from '../2_components';
+import { HomePageHero, AccommodationContainer } from '../2_components/homePage';
 
 const HomePage = () => {
   return (

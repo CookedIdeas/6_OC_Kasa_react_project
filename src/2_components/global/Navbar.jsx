@@ -56,6 +56,13 @@ const NavContainer = styled.nav`
     text-underline-offset: 0.2rem;
   }
 
+  .active {
+    text-decoration: underline;
+    text-decoration-color: var(--color-text-red);
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset: 0.2rem;
+  }
+
   @media only screen and (max-width: 767px) {
     .nav-links > li {
       text-transform: uppercase;

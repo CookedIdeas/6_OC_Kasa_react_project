@@ -6,7 +6,7 @@
   --color-bcg-grey: #f6f6f6;
   --navbar-height: 8rem;
   --footer-height: 21rem;
-  --radius-small: 10px;
+  --radius-small: 1rem;
   --radius-big: 2.5rem;
   --transition: all 0.3s linear;
 }

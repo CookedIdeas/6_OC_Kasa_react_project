@@ -4,6 +4,18 @@ import arrowRight from '../../0_assets/arrow-right.svg';
 import arrowLeft from '../../0_assets/arrow-left.svg';
 
 const SlideShow = ({ cover, pictures, title }) => {
+  //preload pictures for faster slideshow display
+  const componentDidMount = () => {
+    pictures.forEach((picture) => {
+      const img = new Image();
+      img.src = picture;
+    });
+  };
+  useEffect(() => {
+    componentDidMount();
+  });
+
+  // useStates + set initial states
   const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
   const [currentPicture, setCurrentPicture] = useState(
     pictures[currentPictureIndex]
@@ -67,7 +79,6 @@ const Wrapper = styled.section`
   width: 100%;
   position: relative;
   margin: 3rem 0;
-  /* padding: 2.4rem; */
 
   .slideshow-image {
     height: 41rem;

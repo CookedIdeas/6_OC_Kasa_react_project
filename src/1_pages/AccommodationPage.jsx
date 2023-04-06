@@ -1,8 +1,9 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import data from '../4_data/data_logements.json';
-import { SlideShow } from '../2_components/accommodationPage';
+import { SlideShow, Info } from '../2_components/accommodationPage';
+import { CollapsibleContainer } from '../2_components';
 
 const AccommodationPage = () => {
   let { id } = useParams();
@@ -19,11 +20,11 @@ const AccommodationPage = () => {
     cover,
     description,
     equipments,
-    host,
-    location,
+    // host,
+    // location,
     pictures,
-    rating,
-    tags,
+    // rating,
+    // tags,
     title,
   } = currentAccommodation;
 
@@ -34,10 +35,34 @@ const AccommodationPage = () => {
   return (
     <Wrapper className="page-100 section-center">
       <SlideShow cover={cover} pictures={pictures} title={title} />
-      <h2>{title}</h2>
+      <section>
+        <Info {...currentAccommodation} />
+      </section>
+      <section className="more-info-container">
+        <CollapsibleContainer title={'description'} content={description} />
+        <CollapsibleContainer title={'équipements'} content={equipments} />
+      </section>
     </Wrapper>
   );
 };
 export default AccommodationPage;
 
-const Wrapper = styled.main``;
+const Wrapper = styled.main`
+  section {
+  }
+  .more-info-container {
+    width: 100%;
+    margin-top: 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2.8rem;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .more-info-container {
+      margin-top: 3.2rem;
+      flex-direction: column;
+    }
+  }
+`;

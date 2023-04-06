@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import starsCounter from '../../3_utils/starsCounter';
 
 const Info = ({ title, location, tags, host, rating }) => {
+  // == STARS == //
   const [stars, setStars] = useState(null);
-
   useEffect(() => {
     setStars(starsCounter(rating));
   }, [rating]);
@@ -12,7 +12,7 @@ const Info = ({ title, location, tags, host, rating }) => {
   return (
     <Wrapper>
       <div className="location-container">
-        <h1>{title}</h1>
+        <h1 className="js-accommodation-title">{title}</h1>
         <h2>{location}</h2>
         <div className="tags-container">
           {tags.map((tag, index) => (
@@ -39,7 +39,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
-  position: relative;
+  /* position: relative; */
 
   .host-container {
     display: flex;
@@ -65,11 +65,12 @@ const Wrapper = styled.div`
     flex-direction: column;
     gap: 1rem;
     justify-content: space-between;
+    /* white-space: nowrap; */
   }
 
   h1 {
-    /* font-size: 3.6rem; */
-    font-size: 3vw;
+    font-size: 3.6rem;
+    /* font-size: calc(1.8rem + 1.5vi); */
     font-weight: 500;
     line-height: 1;
   }
@@ -83,7 +84,7 @@ const Wrapper = styled.div`
     justify-content: flex-start;
     gap: 1rem;
     margin-top: 1rem;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
   }
 
@@ -91,6 +92,10 @@ const Wrapper = styled.div`
     background-color: var(--color-text-red);
     padding: 0.3rem 3.7rem;
     border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .tag > p {
@@ -120,13 +125,13 @@ const Wrapper = styled.div`
 
   @media only screen and (min-width: 767px) and (max-width: 850px) {
     h1 {
-      /* font-size: 2.5rem; */
+      font-size: 2.5rem;
     }
   }
 
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 410px) {
     h1 {
-      /* font-size: 2rem; */
+      font-size: 2rem;
     }
     .tag {
       padding: 0.3rem 2rem;

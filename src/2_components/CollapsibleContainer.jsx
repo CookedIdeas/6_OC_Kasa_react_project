@@ -1,21 +1,27 @@
 import styled from 'styled-components';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const CollapsibleContainer = ({ title, content }) => {
-  const targetRef = useRef();
-
   const [isContentShown, setIsContentShown] = useState(false);
-  //   const [collapsibleContentHeight, setCollapsibleContentHeight] = useState(0);
 
-  //   useLayoutEffect(() => {
-  //     if (targetRef.current) {
-  //       setCollapsibleContentHeight(targetRef.current.offsetHeight);
-  //     }
-  //   }, []);
+  //if content is an array (for equipments), format it
+  const formatContent = (contentToFormat) => {
+    if (typeof contentToFormat === 'object') {
+      return (
+        <div>
+          {contentToFormat.map((item, index) => {
+            return <p key={index}>{item}</p>;
+          })}
+        </div>
+      );
+    } else {
+      return <p>{contentToFormat}</p>;
+    }
+  };
 
   return (
-    <Wrapper>
+    <Wrapper className="js-collapsible-container">
       <div
         className="collapsible-title"
         onClick={() => setIsContentShown(!isContentShown)}
@@ -26,16 +32,11 @@ const CollapsibleContainer = ({ title, content }) => {
         </button>
       </div>
       <div
-        ref={targetRef}
         className={`${
-          !isContentShown && 'collapsible-content--hide'
+          isContentShown && 'collapsible-content--active'
         } collapsible-content`}
       >
-        {typeof content === 'object' ? (
-          content.map((item, index) => <p key={index}>{item}</p>)
-        ) : (
-          <p>{content}</p>
-        )}
+        {formatContent(content)}
       </div>
     </Wrapper>
   );
@@ -44,6 +45,7 @@ export default CollapsibleContainer;
 
 const Wrapper = styled.div`
   width: 100%;
+
   .collapsible-title {
     position: relative;
     display: flex;
@@ -56,6 +58,10 @@ const Wrapper = styled.div`
     border-radius: var(--radius-small);
     min-height: 5.2rem;
     z-index: 2;
+    cursor: pointer;
+  }
+
+  .collapsible-title > button {
     cursor: pointer;
   }
 
@@ -80,27 +86,31 @@ const Wrapper = styled.div`
     position: relative;
     z-index: 1;
     background-color: var(--color-bcg-grey);
-    padding: 5.3rem 1.2rem;
     margin-top: -1.5rem;
     border-radius: var(--radius-small);
-    max-height: 100%;
-    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 0;
+    min-height: 0;
+    padding: 0rem 2rem;
+    transition: all 0.7s;
   }
 
-  .collapsible-content--hide {
-    padding: 0 1.2rem;
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
+  .collapsible-content--active {
+    /* min-height: 330px; */
+    max-height: 350px;
   }
 
   .collapsible-content > p {
     font-size: 1.4rem;
+    margin: 5.3rem 0;
   }
 
-  .collapsible-content--hide > p {
-    /* max-height: 0;
-    line-height: 0; */
+  .collapsible-content > div {
+    font-size: 1.4rem;
+    padding: 5.3rem 0;
   }
 
   @media only screen and (max-width: 767px) {

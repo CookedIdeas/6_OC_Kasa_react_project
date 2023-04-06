@@ -7,26 +7,16 @@ import { CollapsibleContainer } from '../2_components';
 
 const AccommodationPage = () => {
   let { id } = useParams();
-  const [currentAccommodation, setCurrentAccommodation] = useState({});
+  const [accommodation, setAccommodation] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let thisCurrentAccommodation = data.filter((item) => item.id === id);
-    setCurrentAccommodation(thisCurrentAccommodation[0]);
+    let thisAccommodation = data.filter((item) => item.id === id);
+    setAccommodation(thisAccommodation[0]);
     setIsLoading(false);
   }, [id]);
 
-  const {
-    cover,
-    description,
-    equipments,
-    // host,
-    // location,
-    pictures,
-    // rating,
-    // tags,
-    title,
-  } = currentAccommodation;
+  const { cover, description, equipments, pictures, title } = accommodation;
 
   if (isLoading) {
     return <h1>Données du logement en chargement ;&#41;</h1>;
@@ -36,7 +26,7 @@ const AccommodationPage = () => {
     <Wrapper className="page-100 section-center">
       <SlideShow cover={cover} pictures={pictures} title={title} />
       <section>
-        <Info {...currentAccommodation} />
+        <Info {...accommodation} />
       </section>
       <section className="more-info-container">
         <CollapsibleContainer title={'description'} content={description} />

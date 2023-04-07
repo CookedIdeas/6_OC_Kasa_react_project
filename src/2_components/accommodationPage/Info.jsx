@@ -22,7 +22,7 @@ const Info = ({ title, location, tags, host, rating }) => {
           ))}
         </div>
       </div>
-      <div>
+      <div className="host-and-stars-container">
         <div className="host-container">
           <h2 className="host-name">{host.name}</h2>
           <img src={host.picture} alt={host.name} className="host-picture" />
@@ -37,9 +37,15 @@ export default Info;
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  /* position: relative; */
+  align-items: stretch;
+  gap: 1rem;
+  position: relative;
+
+  .host-and-stars-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
   .host-container {
     display: flex;
@@ -60,6 +66,24 @@ const Wrapper = styled.div`
     text-align: right;
   }
 
+  .star-container {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .star > * {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+
+  .white-star {
+    color: #e3e3e3;
+  }
+
+  .red-star {
+    color: var(--color-text-red);
+  }
+
   .location-container {
     display: flex;
     flex-direction: column;
@@ -70,7 +94,6 @@ const Wrapper = styled.div`
 
   h1 {
     font-size: 3.6rem;
-    /* font-size: calc(1.8rem + 1.5vi); */
     font-weight: 500;
     line-height: 1;
   }
@@ -84,7 +107,6 @@ const Wrapper = styled.div`
     justify-content: flex-start;
     gap: 1rem;
     margin-top: 1rem;
-    /* position: absolute; */
     bottom: 0;
   }
 
@@ -104,34 +126,30 @@ const Wrapper = styled.div`
     font-weight: 500;
   }
 
-  .star-container {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .star > * {
-    height: 2.4rem;
-    width: 2.4rem;
-  }
-
-  .white-star {
-    color: #e3e3e3;
-  }
-
-  .red-star {
-    color: var(--color-text-red);
-  }
-
   @media only screen and (min-width: 767px) and (max-width: 850px) {
     h1 {
       font-size: 2.5rem;
     }
   }
 
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+    .host-and-stars-container {
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+    .host-name {
+      font-size: 2.4rem;
+      width: 18rem;
+    }
+    h1 {
+      padding-bottom: 1rem;
+    }
+  }
+
   @media only screen and (max-width: 410px) {
     h1 {
-      font-size: 2rem;
+      /* font-size: 2rem; */
     }
     .tag {
       padding: 0.3rem 2rem;

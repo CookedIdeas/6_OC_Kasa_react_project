@@ -99,7 +99,6 @@ const Wrapper = styled.div`
   }
 
   .collapsible-content--active {
-    /* min-height: 330px; */
     max-height: 350px;
   }
 
@@ -118,6 +117,9 @@ const Wrapper = styled.div`
       font-size: 2.6rem;
     }
     .collapsible-content > p {
+      font-size: 2.4rem;
+    }
+    .collapsible-content > div {
       font-size: 2.4rem;
     }
   }

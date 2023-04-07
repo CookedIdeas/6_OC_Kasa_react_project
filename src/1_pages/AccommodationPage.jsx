@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import data from '../4_data/data_logements.json';
 import { SlideShow, Info } from '../2_components/accommodationPage';
 import { CollapsibleContainer } from '../2_components';
+import { Error } from './index';
+import { Loading } from '../2_components/global';
 
 const AccommodationPage = () => {
   let { id } = useParams();
@@ -16,30 +18,39 @@ const AccommodationPage = () => {
     setIsLoading(false);
   }, [id]);
 
-  const { cover, description, equipments, pictures, title } = accommodation;
-
-  if (isLoading) {
-    return <h1>Données du logement en chargement ;&#41;</h1>;
+  // if no accommodation found
+  // -> a wrong id has been used in params
+  // -> return error page
+  if (!accommodation) {
+    return <Error />;
   }
 
-  return (
-    <Wrapper className="page-100 section-center">
-      <SlideShow cover={cover} pictures={pictures} title={title} />
-      <section>
-        <Info {...accommodation} />
-      </section>
-      <section className="more-info-container">
-        <CollapsibleContainer title={'description'} content={description} />
-        <CollapsibleContainer title={'équipements'} content={equipments} />
-      </section>
-    </Wrapper>
-  );
+  // an existing id has been used in params
+  if (accommodation) {
+    const { cover, description, equipments, pictures, title } = accommodation;
+
+    // first display a loading
+    if (isLoading) {
+      return <Loading />;
+    }
+
+    return (
+      <Wrapper className="page-100 section-center">
+        <SlideShow cover={cover} pictures={pictures} title={title} />
+        <section>
+          <Info {...accommodation} />
+        </section>
+        <section className="more-info-container">
+          <CollapsibleContainer title={'description'} content={description} />
+          <CollapsibleContainer title={'équipements'} content={equipments} />
+        </section>
+      </Wrapper>
+    );
+  }
 };
 export default AccommodationPage;
 
 const Wrapper = styled.main`
-  section {
-  }
   .more-info-container {
     width: 100%;
     margin-top: 2.4rem;

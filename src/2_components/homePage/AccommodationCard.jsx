@@ -14,8 +14,6 @@ const AccommodationCard = ({ picture, title, id }) => {
           alt={title}
           className="image accommodation-card__image"
         />
-
-        {/* <div className="accommodation-card__textContainer"></div> */}
       </NavLink>
     </Wrapper>
   );

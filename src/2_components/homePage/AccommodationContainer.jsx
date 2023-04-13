@@ -5,17 +5,7 @@ import { AccommodationCard } from '.';
 
 const AccommodationContainer = () => {
   const accommodations = data;
-  // const [accommodations, setAccommodations] = useState([]);
-  // useEffect(() => {
-  //   fetch('./data_logements.json')
-  //     .then((response) => {
-  //       return response.text();
-  //     })
-  //     .then((data) => setAccommodations(data))
-  //     .catch((error) => console.log(error));
-  // }, []);
 
-  // console.log(accommodations);
   return (
     <Wrapper>
       {accommodations.map((accommodation) => {

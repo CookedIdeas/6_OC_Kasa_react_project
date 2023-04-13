@@ -67,6 +67,11 @@ const SlideShow = ({ cover, pictures, title }) => {
               alt="cliquer ici pour faire défiler à gauche"
             />
           </button>
+          <div className="numbering-container">
+            <span>
+              {currentPictureIndex + 1} / {picturesLength}
+            </span>
+          </div>
         </>
       )}
     </Wrapper>
@@ -83,6 +88,19 @@ const Wrapper = styled.section`
   .slideshow-image {
     height: 41rem;
   }
+
+  .numbering-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5rem;
+    text-align: center;
+    bottom: 2rem;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
   .arrow-btn {
     background-color: transparent;
     border: none;
@@ -106,6 +124,9 @@ const Wrapper = styled.section`
     height: 50rem;
     .image {
       height: 50rem;
+    }
+    .numbering-container {
+      display: none;
     }
   }
 `;

@@ -6,7 +6,7 @@ const Footer = () => {
     <FooterContainer>
       <img src={whiteLogo} alt="logo kasa blanc" className="footer-logo" />
       <p className="footer-text">
-        &#169; {new Date().getFullYear()} Kasa. All right reserved
+        &#169; {new Date().getFullYear()} Kasa. All rights reserved
       </p>
     </FooterContainer>
   );
@@ -20,7 +20,7 @@ const FooterContainer = styled.footer`
   align-items: center;
   gap: 5rem;
   padding: 6.6rem 0 2rem 0;
-  max-height: var(--footer-height);
+  height: var(--footer-height);
 
   .footer-logo {
     width: 12rem;
@@ -29,9 +29,17 @@ const FooterContainer = styled.footer`
 
   .footer-text {
     color: white;
+    font-weight: 500;
     font-size: 2.4rem;
   }
 
   @media only screen and (max-width: 767px) {
+    height: calc(var(--footer-height) * 2);
+    padding: 0;
+    justify-content: center;
+
+    .footer-logo {
+      width: 24rem;
+    }
   }
 `;
